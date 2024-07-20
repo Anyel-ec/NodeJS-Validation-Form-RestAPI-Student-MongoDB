@@ -1,0 +1,19 @@
+{
+  "name": "validation-form",
+  "version": "1.0.0",
+  "description": "Validation form by anyel ec to back end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anyel-ec/NodeJS-Validation-Form-RestAPI-Student-MongoDB.git"
+  },
+  "author": "Anyel EC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anyel-ec/NodeJS-Validation-Form-RestAPI-Student-MongoDB/issues"
+  },
+  "homepage": "https://github.com/Anyel-ec/NodeJS-Validation-Form-RestAPI-Student-MongoDB#readme"
+}
