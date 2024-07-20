@@ -1,5 +1,6 @@
-const { getDB } = require('./../config/db');
-const Student = require('./../models/student');
+// src/controllers/studentController.js
+const { getDB } = require('../config/db');
+const Student = require('../models/student');
 const { ObjectId } = require('mongodb');
 
 exports.getStudents = async (req, res) => {
@@ -14,10 +15,10 @@ exports.getStudents = async (req, res) => {
 };
 
 exports.createStudent = async (req, res) => {
-  const { name, surname, course, birthDate, age, acceptedTerms } = req.body;
+  const { nombre, apellido, curso, fecha_nacimiento, cedula, edad, celular, direccion, acepta_terminos } = req.body;
   try {
     const db = getDB();
-    const student = new Student(name, surname, course, birthDate, age, acceptedTerms);
+    const student = new Student({ nombre, apellido, curso, fecha_nacimiento, cedula, edad, celular, direccion, acepta_terminos });
     await db.collection('students').insertOne(student);
     res.status(201).json(student);
   } catch (err) {
@@ -28,12 +29,12 @@ exports.createStudent = async (req, res) => {
 
 exports.updateStudent = async (req, res) => {
   const { id } = req.params;
-  const { name, surname, course, birthDate, age, acceptedTerms } = req.body;
+  const { nombre, apellido, curso, fecha_nacimiento, cedula, edad, celular, direccion, acepta_terminos } = req.body;
   try {
     const db = getDB();
     const updatedStudent = await db.collection('students').findOneAndUpdate(
       { _id: new ObjectId(id) },
-      { $set: { name, surname, course, birthDate, age, acceptedTerms } },
+      { $set: { nombre, apellido, curso, fecha_nacimiento, cedula, edad, celular, direccion, acepta_terminos } },
       { returnOriginal: false }
     );
     res.json(updatedStudent.value);
