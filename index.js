@@ -3,18 +3,19 @@ const EnvLoader = require('./src/config/environment');
 const { connectDB } = require('./src/config/db');
 const studentRoutes = require('./src/routes/studentRoutes');
 
-const envLoader = new EnvLoader(); // Cargar variables de entorno desde el archivo .env
+const envLoader = new EnvLoader(); // change env file path if needed
 
 const app = express();
-app.use(express.json());
+app.use(express.json()); // parse JSON request bodies
 
-const PORT = envLoader.get('PORT') || 3000;
+const PORT = envLoader.get('PORT') || 3000; // get the PORT environment variable
 
-// Conectar a la base de datos
+// connect to the database
 connectDB().then(() => {
-  // Definir las rutas
+  // define the routes for the students API
   app.use('/api/students', studentRoutes);
 
+  // start the server
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
